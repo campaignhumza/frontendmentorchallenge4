@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass"
+      rel="stylesheet"
+    />
+
+    <title>Frontend Mentor | Interactive rating component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        font-family: "Overpass", sans-serif;
+        font-size: 15px;
+
+        color: hsl(217, 12%, 63%);
+        height: 100%;
+      }
+      main {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .rating {
+        width: 310px;
+        height: 310px;
+        background-color: hsl(216, 12%, 8%);
+        border-radius: 25px;
+        padding: 25px;
+        overflow: hidden;
+      }
+      .rating h1 {
+        font-size: 25px;
+        color: hsl(0, 0%, 100%);
+      }
+      .button-unstyle {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+      }
+
+      .rating-circle {
+        background-color: hsl(213, 19%, 18%);
+        border-radius: 50px;
+        height: 50px;
+        width: 50px;
+        line-height: 55px;
+        text-align: center;
+      }
+
+      #rating-selections {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      button.rating-circle:hover {
+        background-color: hsl(217, 12%, 63%);
+        color: hsl(0, 0%, 100%);
+      }
+
+      button.rating-circle:focus {
+        background-color: hsl(25, 97%, 53%);
+        color: hsl(0, 0%, 100%);
+      }
+
+      #rating-result {
+        display: none;
+        text-align: center;
+      }
+
+      #user-selected-rating-summary {
+        background-color: hsl(213, 19%, 18%);
+        color: hsl(25, 97%, 53%);
+        display: inline-block;
+        border-radius: 25px;
+        padding: 5px 15px;
+        margin: 20px;
+      }
+
+      #submit-rating {
+        background-color: hsl(25, 97%, 53%);
+        color: hsl(0, 0%, 100%);
+        width: 100%;
+        height: 40px;
+        display: block;
+        margin: 20px auto;
+        border-radius: 25px;
+      }
+
+      #submit-rating:hover {
+        background-color: hsl(0, 0%, 100%);
+        color: hsl(25, 97%, 53%);
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      var userRated = 0;
+      function selectRating(rating) {
+        userRated = rating;
+      }
+      function submitRating() {
+        document.getElementById("rating-selector").style.display = "none";
+        document.getElementById("rating-result").style.display = "block";
+        document.getElementById("user-selected-rating").innerHTML = userRated;
+      }
+    </script>
+    <main>
+      <div class="rating">
+        <div id="rating-selector">
+          <div class="rating-circle">
+            <img src="./images/icon-star.svg" alt="star icon" />
+          </div>
+          <h1>How did we do?</h1>
+          <p>
+            Please let us know how we did with your support request. All
+            feedback is appreciated to help us improve our offering!
+          </p>
+          <div id="rating-selections">
+            <button
+              onclick="selectRating(1)"
+              class="button-unstyle rating-circle"
+            >
+              1
+            </button>
+            <button
+              onclick="selectRating(2)"
+              class="button-unstyle rating-circle"
+            >
+              2
+            </button>
+            <button
+              onclick="selectRating(3)"
+              class="button-unstyle rating-circle"
+            >
+              3
+            </button>
+            <button
+              onclick="selectRating(4)"
+              class="button-unstyle rating-circle"
+            >
+              4
+            </button>
+            <button
+              onclick="selectRating(5)"
+              class="button-unstyle rating-circle"
+            >
+              5
+            </button>
+          </div>
+          <button
+            id="submit-rating"
+            class="button-unstyle"
+            onclick="submitRating()"
+          >
+            Submit
+          </button>
+        </div>
+
+        <div id="rating-result">
+          <div>
+            <img
+              src="./images/illustration-thank-you.svg"
+              alt="rating thank you icon"
+            />
+          </div>
+          <div id="user-selected-rating-summary">
+            You selected <span id="user-selected-rating"></span> out of 5
+          </div>
+          <h1>Thank you!</h1>
+          <p>
+            We appreciate you taking the time to give a rating. If you ever need
+            more support, don’t hesitate to get in touch!
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
